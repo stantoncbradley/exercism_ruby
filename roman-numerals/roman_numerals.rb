@@ -1,40 +1,35 @@
-class RomanNumerals
+class Fixnum
+  VERSION = 1
+  def to_roman
+    rn=[
+      {one:'I',five:'V',ten:'X'},
+      {one:'X',five:'L',ten:'C'},
+      {one:'C',five:'D',ten:'M'}
+    ]
 
-  require 'pry'
+    numeral_string = ''
+    thousands_count, remainder = self.divmod(1000)
+    thousands_count.times { numeral_string << 'M' }
 
-  NUMERALS = [
-    ['M', 1000],
-    ['D', 500],
-    ['C', 100],
-    ['L', 50],
-    ['X', 10],
-    ['V', 5],
-    ['I', 1]
-  ]
-
-  def self.numeral_counts(number)
-    counts = []
-    NUMERALS.each do |k,v|
-      v, number = number.divmod(v)
-      counts.push([k, v])
-    end
-    counts
-  end
-
-  Fixnum.class_eval do
-    def to_roman
-      numeral_counts = RomanNumerals.numeral_counts(self)
-      string = ''
-      numeral_counts.each_with_index do |hash,ind|
-        if hash[1] == 4
-          string << (hash[0].to_s + numeral_counts[ind-1][0])
-        else
-          hash[1].times {string << hash[0].to_s}
-        end
+    remainder_string=remainder.to_s
+    length=remainder_string.length
+    remainder_string.chars.each_with_index do |char,i|
+      num = char.to_i
+      place=length-(i+1)
+      case num
+      when 0
+        next
+      when 9
+        numeral_string << rn[place][:one] + rn[place][:ten]
+      when 5...9
+        numeral_string << rn[place][:five]
+        (num-5).times { numeral_string << rn[place][:one] }
+      when 4
+        numeral_string << rn[place][:one] + rn[place][:five]
+      else
+        (num).times { numeral_string << rn[place][:one] }
       end
-      string
     end
-
+    numeral_string
   end
-
 end

@@ -42,63 +42,63 @@ class RomanNumeralsTest < Minitest::Test
   end
 
   def test_27
-    skip
+    # skip
     assert_equal 'XXVII', 27.to_roman
   end
 
   def test_48
-    skip
+    # skip
     assert_equal 'XLVIII', 48.to_roman
   end
 
   def test_59
-    skip
+    # skip
     assert_equal 'LIX', 59.to_roman
   end
 
   def test_93
-    skip
+    # skip
     assert_equal 'XCIII', 93.to_roman
   end
 
   def test_141
-    skip
+    # skip
     assert_equal 'CXLI', 141.to_roman
   end
 
   def test_163
-    skip
+    # skip
     assert_equal 'CLXIII', 163.to_roman
   end
 
   def test_402
-    skip
+    # skip
     assert_equal 'CDII', 402.to_roman
   end
 
   def test_575
-    skip
+    # skip
     assert_equal 'DLXXV', 575.to_roman
   end
 
   def test_911
-    skip
+    # skip
     assert_equal 'CMXI', 911.to_roman
   end
 
   def test_1024
-    skip
+    # skip
     assert_equal 'MXXIV', 1024.to_roman
   end
 
   def test_3000
-    skip
+    # skip
     assert_equal 'MMM', 3000.to_roman
   end
 
   # Don't foget to define a constant VERSION inside of Fixnum.
   def test_bookkeeping
-    skip
+    # skip
     assert_equal 1, Fixnum::VERSION
   end
 end
