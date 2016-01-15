@@ -2,6 +2,7 @@
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'roman_numerals'
+using RomanNumerals
 
 # Test data version:
 # 6985644 Merge pull request #121 from mikeyjcat/add-roman-numerals
