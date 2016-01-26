@@ -1,7 +1,10 @@
+class Fixnum
+  VERSION = 1
+end
+
 module RomanNumerals
 
   refine Fixnum do
-    VERSION = 1
 
     ROMAN_GRAND = 'M'
     ROMAN_ARRAY = [
