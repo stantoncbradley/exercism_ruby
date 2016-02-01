@@ -11,7 +11,7 @@ class Sieve
   def get_primes
     ary = @array.dup
     ary.each do |l|
-      ary.reject!{|n| n > l && n % l == 0}
+      ary.reject!{|n| n % l == 0}
     end
     ary
   end
