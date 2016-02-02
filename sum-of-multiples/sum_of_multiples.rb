@@ -2,22 +2,20 @@ class SumOfMultiples
 
   DEFAULT_MULTIPLES = [3,5]
 
-  def initialize *multiples
-    @multiples = multiples
+  def self.to(number)
+    new(*DEFAULT_MULTIPLES).to(number)
   end
 
-  def to number
-    self.class.calc_sum(number, @multiples)
+  def initialize(*factors)
+    @factors = factors
   end
 
-  def self.to number
-    calc_sum(number, DEFAULT_MULTIPLES)
+  def to(number)
+    (0...number).select{ |n| multiple? n }.inject(:+)
   end
 
-  private
-
-  def self.calc_sum limit, multiples
-    (1...limit).inject(0){ |sum,n| multiples.any?{|m| n % m == 0} ? sum + n : sum }
+  def multiple?(n)
+    @factors.any?{ |f| n % f == 0 }
   end
 
 end
